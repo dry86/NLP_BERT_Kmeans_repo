@@ -37,7 +37,7 @@ padded_tokens = [tokens + [tokenizer.pad_token_id] * (max_length - len(tokens)) 
 # tokens_tensor = torch.tensor(padded_tokens).to(device)
 
 # 使用K-means聚类算法对嵌入向量进行聚类
-num_clusters = 400  # 聚类数量
+num_clusters = 200  # 聚类数量
 kmeans = KMeans(n_clusters=num_clusters, random_state=0)
 
 # 在GPU上计算嵌入向量
@@ -65,7 +65,7 @@ embeddings = np.concatenate(embeddings, axis=0)
 cluster_labels = kmeans.fit_predict(embeddings)
 
 # 保存结果到CSV文件
-with open('clusters-gpu-13-400.csv', 'w', newline='') as csvfile:
+with open('clusters-gpu-13-200.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(['Text', 'Cluster'])
     for i, text in enumerate(texts):
